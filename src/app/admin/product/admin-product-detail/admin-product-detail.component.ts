@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Product } from 'src/app/shared/models/product';
 
 @Component({
   selector: 'app-admin-product-detail',
@@ -6,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./admin-product-detail.component.scss']
 })
 export class AdminProductDetailComponent implements OnInit {
-  @Input() product: any;
+  @Input() product: Product;
 
   constructor() { }
 
