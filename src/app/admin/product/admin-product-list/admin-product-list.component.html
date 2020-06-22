@@ -1,4 +1,7 @@
 <div class="fit-body">
+    <div>
+      <button type="button" class="btn-primary" (click)="showAddForm()">Add New Product</button>
+    </div>
     <table class="table">
         <thead>
           <tr>
@@ -18,4 +21,5 @@
         </tbody>
       </table>
       <app-admin-product-detail [product]="selectedProduct"></app-admin-product-detail>
+      <app-admin-product-form [isAdd]="isAddNew"></app-admin-product-form>
 </div>

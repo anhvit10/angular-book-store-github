@@ -37,6 +37,7 @@ export class ProductListComponent implements OnInit {
 
   onSelectedProduct(productId): void {
     this.selectProduct.emit(productId);
+    
     // this.storeService.setSelectedProductId(productId);
   }
 

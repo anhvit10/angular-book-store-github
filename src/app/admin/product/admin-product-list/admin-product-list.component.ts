@@ -10,6 +10,7 @@ import { products } from 'src/app/shared/mock-data/product-list';
 export class AdminProductListComponent implements OnInit {
 
   products: Product[] = [];
+  isAddNew: boolean;
 
   selectedProduct: Product;
   constructor() { }
@@ -21,4 +22,9 @@ export class AdminProductListComponent implements OnInit {
   viewDetail(p): void {
     this.selectedProduct= p;
   }
+
+  showAddForm(): void {
+    this.isAddNew = true;
+  }
+
 }
