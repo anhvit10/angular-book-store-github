@@ -21,5 +21,5 @@
         </tbody>
       </table>
       <app-admin-product-detail [product]="selectedProduct"></app-admin-product-detail>
-      <app-admin-product-form [isAdd]="isAddNew"></app-admin-product-form>
+      <app-admin-product-form *ngIf="isAddNew" (submitForm)="handleSubmitForm($event)"></app-admin-product-form>
 </div>
