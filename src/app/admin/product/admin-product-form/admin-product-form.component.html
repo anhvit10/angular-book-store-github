@@ -2,7 +2,7 @@
 <form novalidate #form="ngForm" (ngSubmit)="onSubmit(form.value)">
     <div class="row">
         <div class="col-sm-4">
-            <img [src]="imageURLL" alt="Fail!">
+            <img [src]="imageURLL.value" alt="Fail!">
         </div>
         <div class="col-sm-4 form-group">
             <div>
@@ -47,14 +47,18 @@
             </div>
         </div>
         <div class="col-sm-4">
+
+            <!-- popup menu-->
             <div>
                 <label>Publisher</label>
                 <input class="form-control" ngModel name="publisher" required #publisher="ngModel">
+                
                 <div class="col alert alert-danger" role="alert"
                     *ngIf="publisher?.errors?.required && publisher?.touched">
                     Publisher is required!
                 </div>
             </div>
+
             <div>
                 <label>Published Date</label>
                 <input class="form-control" ngModel name="publishedDate">
