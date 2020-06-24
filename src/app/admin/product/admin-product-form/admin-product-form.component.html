@@ -2,7 +2,7 @@
 <form novalidate #form="ngForm" (ngSubmit)="onSubmit(form.value)">
     <div class="row">
         <div class="col-sm-4">
-            <img [src]="imageURLL.value" alt="Fail!">
+            <img [src]="imageURLL.value" alt="Insert link to show :))">
         </div>
         <div class="col-sm-4 form-group">
             <div>
@@ -19,6 +19,10 @@
                 <div class="col alert alert-danger" role="alert"
                     *ngIf="imageURLL?.errors?.required && imageURLL?.touched">
                     ImageUrl is required!
+                </div>
+                <div class="col alert alert-danger" role="alert"
+                    *ngIf="imageURLL?.errors?.pattern">
+                    ImageUrl is wrong format!
                 </div>
             </div>
             <div>
@@ -52,7 +56,6 @@
             <div>
                 <label>Publisher</label>
                 <input class="form-control" ngModel name="publisher" required #publisher="ngModel">
-                
                 <div class="col alert alert-danger" role="alert"
                     *ngIf="publisher?.errors?.required && publisher?.touched">
                     Publisher is required!
