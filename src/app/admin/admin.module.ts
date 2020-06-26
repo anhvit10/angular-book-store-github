@@ -10,7 +10,8 @@ import { AdminProductReactiveFormComponent } from './product/admin-product-react
   declarations: [AdminProductDetailComponent, AdminProductListComponent, AdminProductFormComponent, AdminProductReactiveFormComponent],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     AdminProductListComponent,AdminProductDetailComponent, AdminProductFormComponent, AdminProductReactiveFormComponent

@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, OnChanges, SimpleChange, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Product } from 'src/app/shared/models/product';
-import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({
   selector: 'app-admin-product-form',
@@ -13,10 +12,10 @@ export class AdminProductFormComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    
   }
 
   onSubmit(formValue: Product) {
+    console.log(formValue);
     this.submitForm.emit(formValue);
   }
 

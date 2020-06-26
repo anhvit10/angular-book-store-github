@@ -1,8 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, PatternValidator, AbstractControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { Product } from 'src/app/shared/models/product';
-import { ForbiddenNameDirective } from 'src/app/shared/directives/forbidden-name.directive';
 
 @Component({
   selector: 'app-admin-product-reactive-form',
@@ -11,7 +10,7 @@ import { ForbiddenNameDirective } from 'src/app/shared/directives/forbidden-name
 })
 export class AdminProductReactiveFormComponent implements OnInit {
   
-  constructor(private fb: FormBuilder) { }
+  constructor(private receiveProduct: ProductService,private fb: FormBuilder) { }
 
   formProduct:  FormGroup;
 
@@ -26,12 +25,12 @@ export class AdminProductReactiveFormComponent implements OnInit {
       publishedDate: this.fb.control(''),
       size: this.fb.control(''),
       pageCount: this.fb.control(''),
-      tikiNow: this.fb.control('')
+      isTikiNow: this.fb.control('')
     });
   }
 
-  onSubmit(value){
-    console.log(value);
+  onSubmit(value: Product){
+    this.receiveProduct.createProduct(value);
   }
 
 }

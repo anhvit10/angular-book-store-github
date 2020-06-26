@@ -16,23 +16,26 @@ export class AdminProductListComponent implements OnInit{
   isAddNewReactive:boolean = false;
   selectedProduct: Product;
 
-  constructor() { }
+  constructor(private receiveProduct: ProductService) { }
 
   ngOnInit(): void {
     this.products = products;
+    this.receiveProduct.$newProduct.subscribe(formValue => {
+      this.products.push(formValue);
+      this.isAddNewReactive = false;
+    })
   }
 
   viewDetail(p): void {
-    this.selectedProduct= p;
+    this.selectedProduct = p;
   }
 
   showAddForm(): void {
-    this.isAddNew = true;
+    this.isAddNew = !this.isAddNew;
   }
 
   showAddReactiveForm(): void {
-    this.isAddNewReactive = true;
-    console.log(this.isAddNewReactive);
+    this.isAddNewReactive = !this.isAddNewReactive;
   }
 
   handleSubmitForm(product) {

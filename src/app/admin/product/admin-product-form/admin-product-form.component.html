@@ -15,7 +15,7 @@
                 </div>
                 <div>
                     <label>Image URL</label>
-                    <input class="form-control" ngModel name="imageURL" required #imageURLL="ngModel" pattern="(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png|jpeg)">
+                    <input class="form-control" ngModel name="imageUrl" required #imageURLL="ngModel" pattern="(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png|jpeg)">
                     <div class="col alert alert-danger" role="alert"
                         *ngIf="imageURLL?.errors?.required && imageURLL?.touched">
                         ImageUrl is required!

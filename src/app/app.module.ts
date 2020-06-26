@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AdminModule } from './admin/admin.module';
@@ -7,6 +9,8 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { StoreModule } from './store/store.module';
 import { SharedModule } from './shared/shared.module';
+
+
 
 @NgModule({
   declarations: [
@@ -18,7 +22,8 @@ import { SharedModule } from './shared/shared.module';
     CoreModule,
     StoreModule,
     AdminModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
