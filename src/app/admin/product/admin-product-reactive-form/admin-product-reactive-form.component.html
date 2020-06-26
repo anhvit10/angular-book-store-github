@@ -1,1 +1,89 @@
-<p>admin-product-reactive-form works!</p>
+<div class="container">
+    <form novalidate (ngSubmit)="onSubmit(formProduct.value)" [formGroup]="formProduct">
+        <div class="row">
+            <div class="col-sm-4">
+                <img [src]="formProduct.controls.imageUrl.value" alt="Enter a link to display :))">
+            </div>
+            <div class="col-sm-4 form-group">
+                <div>
+                    <label>Title</label>
+                    <input class="form-control" formControlName="title">
+                    <div class="col alert alert-danger" role="alert"
+                        *ngIf="formProduct.controls.title?.hasError('required') && formProduct.controls.title?.touched">
+                        Title is required!
+                    </div>
+                </div>
+                <div>
+                    <label>Image URL</label>
+                    <input class="form-control" formControlName="imageUrl" pattern="(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)">
+                    <div class="col alert alert-danger" role="alert"
+                        *ngIf="formProduct.controls.imageUrl?.errors?.required && formProduct.controls.imageUrl?.touched">
+                        ImageUrl is required!
+                    </div>
+                    <div class="col alert alert-danger" role="alert"
+                        *ngIf="formProduct.controls.imageUrl?.errors?.pattern">
+                        ImageUrl is wrong format!
+                    </div>
+                </div>
+                <div>
+                    <label>Author</label>
+                    <input class="form-control" formControlName="author">
+                    <div class="col alert alert-danger" role="alert"
+                        *ngIf="formProduct.controls.author?.errors?.required && formProduct.controls.author?.touched">
+                        Author is required!
+                    </div>
+                </div>
+                <div>
+                    <label>Final Price</label>
+                    <input class="form-control" formControlName="finalPrice">
+                    <div class="col alert alert-danger" role="alert"
+                        *ngIf="formProduct.controls.finalPrice?.errors?.required && formProduct.controls.finalPrice?.touched">
+                        Final Price is required!
+                    </div>
+                </div>
+                <div>
+                    <label>Regular Price</label>
+                    <input class="form-control" formControlName="regularPrice">
+                    <div class="col alert alert-danger" role="alert"
+                        *ngIf="formProduct.controls.regularPrice?.errors?.required && formProduct.controls.regularPrice?.touched">
+                        Regular Price is required!
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div>
+                    <label>Publisher</label>
+                    <input class="form-control" formControlName="publisher">
+                    <div class="col alert alert-danger" role="alert"
+                        *ngIf="formProduct.controls.publisher?.errors?.required && formProduct.controls.publisher?.touched">
+                        Publisher is required!
+                    </div>
+                </div>
+                <div>
+                    <label>Published Date</label>
+                    <input class="form-control" id="publishedDate-book" formControlName="publishedDate">
+                </div>
+                <div>
+                    <label>Size</label>
+                    <input class="form-control" formControlName="size">
+                </div>
+                <div>
+                    <label>Page Count</label>
+                    <input class="form-control" formControlName="pageCount">
+                </div>
+                <div>
+                    <label>Tiki Now</label><br/>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" value="true" name="tiki" formControlName="tikiNow">
+                        <label class="form-check-label" for="inlineRadio1">Active</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" value="false" name="tiki" formControlName="tikiNow">
+                        <label class="form-check-label" for="inlineRadio2">InActive</label>
+                      </div>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="formProduct.invalid">SubMit</button>
+    </form>
+    </div>

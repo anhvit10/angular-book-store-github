@@ -12,21 +12,14 @@ import { Subscription } from 'rxjs';
 export class AdminProductListComponent implements OnInit{
 
   products: Product[] = [];
-  
   isAddNew: boolean = false;
-
+  isAddNewReactive:boolean = false;
   selectedProduct: Product;
 
-  constructor(private productService: ProductService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.products= products;
-
-    this.productService.$newProduct.subscribe(newProduct => {
-      this.products.push(newProduct);
-      this.isAddNew = false;
-    })
-
+    this.products = products;
   }
 
   viewDetail(p): void {
@@ -35,12 +28,16 @@ export class AdminProductListComponent implements OnInit{
 
   showAddForm(): void {
     this.isAddNew = true;
-    // console.log(this.isAddNew);
   }
 
-  // handleSubmitForm(product) {
-  //   this.products.push(product);
-  //   this.isAddNew = false;
-  // }
+  showAddReactiveForm(): void {
+    this.isAddNewReactive = true;
+    console.log(this.isAddNewReactive);
+  }
+
+  handleSubmitForm(product) {
+    this.products.push(product);
+    this.isAddNew = false;
+  }
 
 }
