@@ -53,7 +53,9 @@
             <div class="col-sm-4">
                 <div>
                     <label>Publisher</label>
-                    <input class="form-control" formControlName="publisher">
+                    <select class="custom-select" formControlName="publisher" id="inputGroupSelect02">
+                        <option selected *ngFor="let publ of publisher">{{ publ.value }}</option>
+                    </select>
                     <div class="col alert alert-danger" role="alert"
                         *ngIf="formProduct.controls.publisher?.errors?.required && formProduct.controls.publisher?.touched">
                         Publisher is required!
@@ -84,6 +86,6 @@
                 </div>
             </div>
         </div>
-        <button class="btn btn-primary" type="submit">SubMit</button>
+        <button class="btn btn-primary" type="submit" [disabled]="formProduct.invalid">SubMit</button>
     </form>
 </div>

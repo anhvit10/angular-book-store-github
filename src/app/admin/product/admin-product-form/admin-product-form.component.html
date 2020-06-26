@@ -55,7 +55,9 @@
                 <!-- popup menu-->
                 <div>
                     <label>Publisher</label>
-                    <input class="form-control" ngModel name="publisher" required #publisher="ngModel">
+                    <select class="custom-select" ngModel name="publisher" required #publisher="ngModel" id="inputGroupSelect02">
+                        <option *ngFor="let publ of publishers">{{ publ.value }}</option>
+                    </select>
                     <div class="col alert alert-danger" role="alert"
                         *ngIf="publisher?.errors?.required && publisher?.touched">
                         Publisher is required!

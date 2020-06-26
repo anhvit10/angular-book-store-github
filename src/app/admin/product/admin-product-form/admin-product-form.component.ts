@@ -1,5 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Product } from 'src/app/shared/models/product';
+import { publishers } from 'src/app/shared/mock-data/publisher-list';
 
 @Component({
   selector: 'app-admin-product-form',
@@ -7,6 +8,7 @@ import { Product } from 'src/app/shared/models/product';
   styleUrls: ['./admin-product-form.component.scss']
 })
 export class AdminProductFormComponent implements OnInit {
+  @Input() publishers: any;
   @Output() submitForm = new EventEmitter();
 
   constructor() { }
@@ -15,7 +17,7 @@ export class AdminProductFormComponent implements OnInit {
   }
 
   onSubmit(formValue: Product) {
-    console.log(formValue);
+    // console.log(formValue);
     this.submitForm.emit(formValue);
   }
 

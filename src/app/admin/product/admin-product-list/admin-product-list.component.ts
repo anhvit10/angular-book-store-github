@@ -3,6 +3,7 @@ import { Product } from 'src/app/shared/models/product';
 import { products } from 'src/app/shared/mock-data/product-list';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { Subscription } from 'rxjs';
+import { publishers } from 'src/app/shared/mock-data/publisher-list';
 
 @Component({
   selector: 'app-admin-product-list',
@@ -12,6 +13,7 @@ import { Subscription } from 'rxjs';
 export class AdminProductListComponent implements OnInit{
 
   products: Product[] = [];
+  publisher;
   isAddNew: boolean = false;
   isAddNewReactive:boolean = false;
   selectedProduct: Product;
@@ -20,6 +22,7 @@ export class AdminProductListComponent implements OnInit{
 
   ngOnInit(): void {
     this.products = products;
+    this.publisher = publishers;
     this.receiveProduct.$newProduct.subscribe(formValue => {
       this.products.push(formValue);
       this.isAddNewReactive = false;
