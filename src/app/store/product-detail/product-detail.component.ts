@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { products } from 'src/app/shared/mock-data/product-list';
 import { Product } from 'src/app/shared/models/product';
 import { StoreService } from '../services/store.service';
@@ -16,12 +16,12 @@ export class ProductDetailComponent implements OnInit, OnChanges {
   constructor(private storeService: StoreService) { }
 
   ngOnChanges(productId: {previousValue, currentValue, firstChange}) {
-    this.product = products.find(ele => ele.$key === this.productId);
+    this.product = products.find(ele => ele.id === this.productId);
   }
 
   ngOnInit(): void {
     this.storeService.selectedProductId$.subscribe(pid => {
-      this.product = products.find(ele => ele.$key === pid);
+      this.product = products.find(ele => ele.id === pid);
     });
   }
 

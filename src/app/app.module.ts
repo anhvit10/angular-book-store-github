@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -9,7 +9,12 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { StoreModule } from './store/store.module';
 import { SharedModule } from './shared/shared.module';
+import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 
+const HttpInterceptorProviders = [
+  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  // { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true },
+];
 
 
 @NgModule({
@@ -25,7 +30,10 @@ import { SharedModule } from './shared/shared.module';
     SharedModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    HttpInterceptorProviders
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

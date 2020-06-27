@@ -56,7 +56,7 @@
                 <div>
                     <label>Publisher</label>
                     <select class="custom-select" ngModel name="publisher" required #publisher="ngModel" id="inputGroupSelect02">
-                        <option *ngFor="let publ of publishers">{{ publ.value }}</option>
+                        <option *ngFor="let publ of publishers" [value]="publ.value">{{publ.value}}</option>
                     </select>
                     <div class="col alert alert-danger" role="alert"
                         *ngIf="publisher?.errors?.required && publisher?.touched">

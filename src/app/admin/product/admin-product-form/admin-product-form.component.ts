@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Product } from 'src/app/shared/models/product';
-import { publishers } from 'src/app/shared/mock-data/publisher-list';
+import { ProductService } from 'src/app/shared/services/product.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-admin-product-form',
@@ -8,17 +9,20 @@ import { publishers } from 'src/app/shared/mock-data/publisher-list';
   styleUrls: ['./admin-product-form.component.scss']
 })
 export class AdminProductFormComponent implements OnInit {
-  @Input() publishers: any;
+  @Input() publishers;
   @Output() submitForm = new EventEmitter();
 
-  constructor() { }
+  subcription: Subscription;
+
+  constructor(private receiveProduct: ProductService) { }
 
   ngOnInit(): void {
   }
 
-  onSubmit(formValue: Product) {
-    // console.log(formValue);
-    this.submitForm.emit(formValue);
+  onSubmit(value: Product){
+    const product = new Product(value);
+    this.subcription = this.receiveProduct.createProduct(product).subscribe(result => console.log(result));
+    // this.receiveProduct.createProduct(value);
   }
 
 }
