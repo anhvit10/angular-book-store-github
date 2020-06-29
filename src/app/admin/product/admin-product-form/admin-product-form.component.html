@@ -79,11 +79,11 @@
                 <div>
                     <label>Tiki Now</label><br/>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" value="true" name="isTikiNow" ngModel>
+                        <input class="form-check-input" type="radio" [value]="true" name="isTikiNow" ngModel>
                         <label class="form-check-label" for="inlineRadio1">Active</label>
                       </div>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" value="false" name="isTikiNow" ngModel>
+                        <input class="form-check-input" type="radio" [value]="false" name="isTikiNow" ngModel>
                         <label class="form-check-label" for="inlineRadio2">InActive</label>
                       </div>
                 </div>

@@ -25,6 +25,7 @@ export class AdminProductReactiveFormComponent implements OnInit {
     this.publisher = publishers;
 
     this.formProduct = this.fb.group({
+      id: this.fb.control(this.editProduct.id),
       title: this.fb.control(this.editProduct.title, Validators.required),
       imageUrl: this.fb.control(this.editProduct.imageUrl, Validators.required),
       author: this.fb.control(this.editProduct.author, Validators.required),

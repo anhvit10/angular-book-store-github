@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,11 +11,21 @@ import { StoreModule } from './store/store.module';
 import { SharedModule } from './shared/shared.module';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 
+import { RouterModule, Routes } from '@angular/router';
+import { AdminProductListComponent } from './admin/product/admin-product-list/admin-product-list.component';
+
+
 const HttpInterceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   // { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true },
 ];
 
+const routes: Routes = [
+  {
+  path: 'admin-product-list',
+  component: AdminProductListComponent
+  }
+];
 
 @NgModule({
   declarations: [
@@ -28,7 +38,8 @@ const HttpInterceptorProviders = [
     StoreModule,
     AdminModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [
     // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
