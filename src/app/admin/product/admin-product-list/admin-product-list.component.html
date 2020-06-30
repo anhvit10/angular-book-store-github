@@ -16,15 +16,14 @@
             <td>{{p.title}}</td>
             <td>{{p.author}}</td>
             <td>{{p.publisher}}</td>
-            <td><button type="button" class="btn btn-secondary" (click)="viewDetail(p)">Detail</button>
-                <button type="button" class="btn btn-success" (click)="edit(p)">Edit</button>
+            <td><button type="button" class="btn btn-secondary" (click)="viewProduct(p)">Detail</button>
+                <button type="button" class="btn btn-success" (click)="editProduct(p)">Edit</button>
                 <button type="button" class="btn btn-danger" (click)="deleteProduct(p)">Delete</button>
             </td>
-
           </tr>
         </tbody>
       </table>
-      <app-admin-product-detail [product]="selectedProduct" *ngIf="isDetail"></app-admin-product-detail>
+      <!-- <app-admin-product-detail [product]="selectedProduct" *ngIf="isDetail"></app-admin-product-detail>
       <app-admin-product-form *ngIf="isAddNew" [publishers]="publisher" (submitForm)="handleSubmitForm($event)"></app-admin-product-form>
-      <app-admin-product-reactive-form  [editProduct]="selectedPro" *ngIf="isediting"></app-admin-product-reactive-form>
+      <app-admin-product-reactive-form  [editProduct]="selectedPro" *ngIf="isediting"></app-admin-product-reactive-form> -->
 </div>

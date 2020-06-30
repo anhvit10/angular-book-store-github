@@ -5,13 +5,23 @@ import { AdminProductListComponent } from './product/admin-product-list/admin-pr
 import { AdminProductFormComponent } from './product/admin-product-form/admin-product-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminProductReactiveFormComponent } from './product/admin-product-reactive-form/admin-product-reactive-form.component';
+import { Routes } from '@angular/router';
+import { AdminRoutingModule } from './admin-routing.module';
+
+const adminRoute: Routes = [
+  {
+    path: 'product-list',
+    component: AdminProductListComponent
+  }
+]
 
 @NgModule({
   declarations: [AdminProductDetailComponent, AdminProductListComponent, AdminProductFormComponent, AdminProductReactiveFormComponent],
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AdminRoutingModule
   ],
   exports: [
     AdminProductListComponent,AdminProductDetailComponent, AdminProductFormComponent, AdminProductReactiveFormComponent

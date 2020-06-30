@@ -1,5 +1,5 @@
 <div class="container">
-    <form novalidate #form="ngForm" (ngSubmit)="onSubmit(form.value)">
+    <form novalidate #form="ngForm" >
         <div class="row">
             <div class="col-sm-4">
                 <img [src]="imageURLL.value" alt="Insert link to show :))">
@@ -89,6 +89,7 @@
                 </div>
             </div>
         </div>
-        <button class="btn btn-primary" type="submit" [disabled]="form.invalid">SubMit</button>
+        <button class="btn btn-primary" (click)="cancel()">Cancel</button>
+        <button class="btn btn-primary" type="submit" (click)="onSubmit(form)" [disabled]="form.invalid">SubMit</button>
     </form>
     </div>

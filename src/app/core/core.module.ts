@@ -8,13 +8,17 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { SharedModule } from '../shared/shared.module';
 
+import { RouterModule } from '@angular/router';
+
+
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, LoginComponent, RegisterComponent],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    RouterModule
   ],
   exports: [HeaderComponent, FooterComponent, LoginComponent, RegisterComponent]
 })

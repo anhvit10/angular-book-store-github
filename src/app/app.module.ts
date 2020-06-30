@@ -10,26 +10,17 @@ import { CoreModule } from './core/core.module';
 import { StoreModule } from './store/store.module';
 import { SharedModule } from './shared/shared.module';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
-
-import { RouterModule, Routes } from '@angular/router';
-import { AdminProductListComponent } from './admin/product/admin-product-list/admin-product-list.component';
-
+import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
 
 const HttpInterceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   // { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true },
 ];
 
-const routes: Routes = [
-  {
-  path: 'admin-product-list',
-  component: AdminProductListComponent
-  }
-];
-
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +30,7 @@ const routes: Routes = [
     AdminModule,
     SharedModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    AppRoutingModule
   ],
   providers: [
     // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
