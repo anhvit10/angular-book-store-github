@@ -15,7 +15,7 @@ export class ProductFilterComponent implements OnInit {
   }
 
   search() {
-    console.log(this.searchValue);
+    // console.log(this.searchValue);
     this.searchSubmit.emit(this.searchValue);
   }
 }
