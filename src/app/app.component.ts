@@ -9,17 +9,17 @@ import { AuthService } from './shared/services/auth.service';
 })
 
 export class AppComponent {
-  selectedProductId: string;
+  // selectedProductId: string;
 
   constructor(private authService: AuthService) {
-    authService.refreshToken();
+    // authService.refreshToken();
   }
 
-  handleSelectedProduct(productId: string): void {
-    this.selectedProductId = productId;
-  }
+  // handleSelectedProduct(productId: string): void {
+  //   this.selectedProductId = productId;
+  // }
 
-  handleYesConfirm() {
-    console.log('btn Yes was clicked!');
-  }
+  // handleYesConfirm() {
+  //   console.log('btn Yes was clicked!');
+  // }
 }

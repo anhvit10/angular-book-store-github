@@ -13,27 +13,34 @@ export class LoginComponent implements OnInit {
   invalidUser = false;
   subscription: Subscription;
 
+  error = '';
   constructor(private authService: AuthService) { }
-
+  
   ngOnInit(): void {
   }
 
   login(loginForm): void {
-    this.invalidUser = false;
-    const user = loginForm.value;
-    console.log(user);
-    this.subscription = this.authService.login(user).subscribe(result => {
-      if (result) {
-        this.invalidUser = false;
+    if (!loginForm.valid) {
+      return;
+    }
+    const email = loginForm.value.email;
+    const password = loginForm.value.password;
+    // this.isLoading = true;
+    this.subscription = this.authService.login(email, password).subscribe(
+      resData => {
+        // this.isLoading = false;
         this.btnCloseModal.nativeElement.click();
-      } else {
-        this.invalidUser = true;
+        this.authService.navigateAfterLogin();
+      },
+      errorMessage => {
+        this.error = errorMessage;
+        // this.isLoading = false;
       }
-    });
+    );
   }
 
   closeModal(loginForm): void {
-    this.invalidUser = false;
+    // this.invalidUser = false;
 
     loginForm.reset();
     if (this.subscription) {

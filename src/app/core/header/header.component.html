@@ -77,8 +77,8 @@
                             <div class="dropdown-menu" aria-labelledby="user-controls">
                                 <a class="dropdown-item" routerLink="/store/my-orders" >Đơn hàng của tôi</a>
                                 <a class="dropdown-item" routerLink="/store/my-favourites">Sản phẩm yêu thích</a>
-                                <a class="dropdown-item" routerLink="/admin/orders" *ngIf="user.isAdmin">Quản lý đơn hàng</a>
-                                <a class="dropdown-item" routerLink="/admin" *ngIf="user.isAdmin">Quản lý sản phẩm</a>
+                                <a class="dropdown-item" routerLink="/admin/orders" *ngIf="isAdmin">Quản lý đơn hàng</a>
+                                <a class="dropdown-item" routerLink="/admin" *ngIf="isAdmin">Quản lý sản phẩm</a>
                                 <div class="dropdown-divider"></div> 
                                 <a class="dropdown-item" href="/" (click)="logout()">Thoát tài khoản</a>
                             </div>
