@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   subscription: Subscription;
 
   error = '';
+  isLoading = false;
   constructor(private authService: AuthService) { }
   
   ngOnInit(): void {
@@ -25,16 +26,16 @@ export class LoginComponent implements OnInit {
     }
     const email = loginForm.value.email;
     const password = loginForm.value.password;
-    // this.isLoading = true;
+    this.isLoading = true;
     this.subscription = this.authService.login(email, password).subscribe(
       resData => {
-        // this.isLoading = false;
+        this.isLoading = false;
         this.btnCloseModal.nativeElement.click();
         this.authService.navigateAfterLogin();
       },
       errorMessage => {
         this.error = errorMessage;
-        // this.isLoading = false;
+        this.isLoading = false;
       }
     );
   }

@@ -3,20 +3,39 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
+  HttpParams,
+  HttpEventType
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AuthService } from '../services/auth.service';
+import { take, exhaustMap, tap } from 'rxjs/operators';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    // const copiedReq = request.clone({headers: request.headers.set('Authorization', `Bearer ${localStorage.getItem('token')}`)});
-    // if (request.url.indexOf('/login') < 0) {
-    //   return next.handle(copiedReq);
-    // }
-    return next.handle(request);
+  intercept(request: HttpRequest<any>, next: HttpHandler) {
+    return this.authService.authUser.pipe(
+      take(1),
+      exhaustMap(user => {
+        if (!user) {
+          return next.handle(request);
+        }
+        const modifiedReq = request.clone({
+          params: new HttpParams().set('auth', user.token)
+        });
+        return next.handle(modifiedReq).pipe(
+          tap(event => {
+            if (event.type === HttpEventType.Response) {
+              console.log(event.body);
+            }
+          })
+        );
+      })
+    );
   }
+
+  
 }

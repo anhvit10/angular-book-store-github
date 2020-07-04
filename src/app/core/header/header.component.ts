@@ -36,6 +36,7 @@ export class HeaderComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.unsubscribeAll = new Subject<any>() ;
     this.authService.authUser.pipe(
       takeUntil(this.unsubscribeAll),
       switchMap(authUser => {

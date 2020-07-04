@@ -13,6 +13,7 @@ export class AppComponent {
 
   constructor(private authService: AuthService) {
     // authService.refreshToken();
+    this.authService.autoLogin();
   }
 
   // handleSelectedProduct(productId: string): void {

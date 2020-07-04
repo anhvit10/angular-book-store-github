@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
 import { forbiddenNameValidator } from 'src/app/shared/directives/forbidden-name.directive';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -11,8 +12,10 @@ export class RegisterComponent implements OnInit {
   @ViewChild('btnCloseModal') btnCloseModal;
 
   registerForm: FormGroup;
-
-  constructor(private fb: FormBuilder) { }
+  isLoading = false;
+  error = '';
+  
+  constructor(private fb: FormBuilder, private authService: AuthService) { }
 
 
   ngOnInit(): void {
@@ -87,9 +90,27 @@ export class RegisterComponent implements OnInit {
   removeMobile(index: number) {
     this.mobile.removeAt(index);
   }
-
+  
   register(): void {
-    console.log(this.registerForm.value);
-    this.btnCloseModal.nativeElement.click();
+    // console.log(this.registerForm.value);
+    // this.btnCloseModal.nativeElement.click();
+    if (!this.registerForm.valid) {
+      return;
+    }
+    this.isLoading = true;
+    this.authService.signup(
+      this.registerForm.value.email,
+      this.registerForm.value.password,
+      this.registerForm.value.name,
+      this.registerForm.value.mobile).subscribe(
+      resData => {
+        this.isLoading = false;
+        this.btnCloseModal.nativeElement.click();
+      },
+      errorMessage => {
+        this.error = errorMessage;
+        this.isLoading = false;
+      }
+    );
   }
 }

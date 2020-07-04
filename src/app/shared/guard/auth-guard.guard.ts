@@ -27,6 +27,8 @@ export class AuthGuardGuard implements CanActivate, CanActivateChild, CanDeactiv
       })
     );
   }
+
+  
   canActivateChild(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {

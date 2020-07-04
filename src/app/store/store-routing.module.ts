@@ -9,6 +9,7 @@ import { CheckOutComponent } from './check-out/check-out.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { MyFavoritesComponent } from './my-favorites/my-favorites.component';
+import { AuthGuardGuard } from '../shared/guard/auth-guard.guard';
 
 const routes: Routes = [
   {
@@ -22,26 +23,36 @@ const routes: Routes = [
   {
     path: 'cart',
     component: ShoppingCartComponent,
+    canActivate: [AuthGuardGuard]
   },
   {
     path: 'shipping',
     component: ShippingFormComponent,
+    canActivate: [AuthGuardGuard]
+
   },
   {
     path: 'checkout',
     component: CheckOutComponent,
+    canActivate: [AuthGuardGuard]
+
   },
   {
     path: 'order-success',
     component: OrderSuccessComponent,
+    canActivate: [AuthGuardGuard]
+
   },
   {
     path: 'my-orders',
     component: MyOrdersComponent,
+    canActivate: [AuthGuardGuard]
+
   },
   {
     path: 'my-favorites',
     component: MyFavoritesComponent,
+    canActivate: [AuthGuardGuard]
   }
 ];
 

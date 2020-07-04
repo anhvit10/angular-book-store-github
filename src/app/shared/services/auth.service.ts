@@ -57,6 +57,7 @@ export class AuthService {
     return this.http.post<AppUser>('https://book-store-345fe.firebaseio.com/user.json', appUser);
   }
 
+  
   login(email: string, password: string) {
     return this.http
       .post<AuthResponseData>(

@@ -47,7 +47,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="collapse navbar-collapse nav-control" id="navbar" *ngIf="!isLoggedInUser">
+                <div class="collapse navbar-collapse nav-control" id="navbar" *ngIf="!isAuthenticated">
                     <i class="tikicon icon-user"></i>
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item dropdown">
@@ -66,13 +66,13 @@
                         </li>
                     </ul>
                 </div>
-                <div class="collapse navbar-collapse nav-control" id="navbar" *ngIf="isLoggedInUser">
+                <div class="collapse navbar-collapse nav-control" id="navbar" *ngIf="isAuthenticated">
                     <i class="tikicon icon-user"></i>
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="user-controls" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Chào<br>{{ user.name }}
+                                Chào<br>{{ user?.email }}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="user-controls">
                                 <a class="dropdown-item" routerLink="/store/my-orders" >Đơn hàng của tôi</a>
@@ -89,7 +89,7 @@
                     <i class="tikicon icon-cart"></i>
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item dropdown">
-                            <span class="nav-link" style="cursor: pointer;">
+                            <span routerLink="/store/cart" class="nav-link" style="cursor: pointer; outline: none;">
                                 Giỏ hàng
                                 <span class="cart-count">{{ cartCount}}</span>
                             </span>
